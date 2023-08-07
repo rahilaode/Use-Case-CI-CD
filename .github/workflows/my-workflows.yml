@@ -30,6 +30,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Get list of container
-        run: |
-          docker container ls
+    - uses: actions/checkout@v3
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date +'%s')"
+      
+    - name: Build the Docker image
+      env:
+        DATES: ${{ steps.date.outputs.date }}
+      run: |
+        docker build -t rahilwisdom/flaskimages:$DATES .
+        docker run -d --name flask-container -p 5000:5000 rahilwisdom/flaskimages:$DATES
+
+    - name: Testing
+      run: |
+        python3 test_app.py
