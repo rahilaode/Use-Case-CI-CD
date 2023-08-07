@@ -24,4 +24,5 @@ jobs:
       run: |
         docker build -t rahilwisdom/flaskimages:$DATES .
         docker images
+        docker run p 5000:5000 rahilwisdom/flaskimages:$DATES
         docker container ls
