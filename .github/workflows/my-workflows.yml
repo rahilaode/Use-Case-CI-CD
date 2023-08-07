@@ -18,6 +18,5 @@ jobs:
       env:
         DATES: $(date +%s)
       run: |
-        docker build -t rahilwisdom/flaskimages:$DATES .
+        docker build -t rahilwisdom/flaskimages:1.0 .
         docker images
-        docker run --name flaskcontainer -p 5000:5000 rahilwisdom/flaskimages:$DATES
