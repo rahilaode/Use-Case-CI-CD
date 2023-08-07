@@ -16,6 +16,6 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       env:
-        DATES: $(date +%s)
+        DATES: ${{ steps.date.outputs.date }}
       run: |
         echo $DATES
