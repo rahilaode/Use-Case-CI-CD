@@ -15,7 +15,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
+      env:
+        DATES: $(date +%s)
       run: |
-        docker build -t rahilwisdom/flaskimages:${{ steps.date.outputs.date }} .
+        docker build -t rahilwisdom/flaskimages:$DATES .
         docker images
-        docker run --name flaskcontainer -p 5000:5000 rahilwisdom/flaskimages:${{ steps.date.outputs.date }}
+        docker run --name flaskcontainer -p 5000:5000 rahilwisdom/flaskimages:$DATES
