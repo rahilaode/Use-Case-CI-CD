@@ -18,7 +18,7 @@ jobs:
       env:
         DATES: $(date +%s)
       run: |
-        docker build . --tag rahilwisdom/flaskapp:$DATES
+        docker build . -t rahilwisdom/flaskapp:$DATES
         docker run --name flaskapp-cont -p 5000:5000 rahilwisdom/flaskapp:$DATES
         docker images
         docker container ls
