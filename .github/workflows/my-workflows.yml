@@ -42,6 +42,10 @@ jobs:
         docker build -t rahilwisdom/flaskimages:$DATES .
         docker run -d --name flask-container -p 5000:5000 rahilwisdom/flaskimages:$DATES
 
+    - name: Install Dependencies
+      run: |
+        pip install -r requirements.txt
+        
     - name: Testing
       run: |
         python3 test_app.py
