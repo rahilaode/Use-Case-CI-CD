@@ -18,7 +18,4 @@ jobs:
       env:
         DATES: $(date +%s)
       run: |
-        docker build . -t rahilwisdom/flaskapp:$DATES
-        docker run --name flaskapp-cont -p 5000:5000 rahilwisdom/flaskapp:$DATES
-        docker images
-        docker container ls
+        echo $DATES
