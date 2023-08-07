@@ -14,9 +14,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      
     - name: Build the Docker image
       env:
-        DATES: $(date +%s)
+        DATES: ${{ steps.date.outputs.date }}
       run: |
-        docker build -t rahilwisdom/flaskimages:1.0 .
+        docker build -t rahilwisdom/flaskimages:$DATES .
         docker images
