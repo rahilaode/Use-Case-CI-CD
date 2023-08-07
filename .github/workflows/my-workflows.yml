@@ -16,5 +16,6 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: |
-        docker build -t rahilwisdom/flaskimages:1.0
+        docker build -t rahilwisdom/flaskimages:${{ steps.date.outputs.date }} .
         docker images
+        docker run --name flaskcontainer -p 5000:5000 rahilwisdom/flaskimages:${{ steps.date.outputs.date }}
