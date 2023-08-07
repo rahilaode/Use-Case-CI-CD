@@ -17,7 +17,7 @@ class TestApp(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
 
         # Memastikan bahwa "about.html" ada dalam respon
-        self.assertIn('about.html', response.data.decode())
+        self.assertIn('templates/about.html', response.data.decode())
 
         # Memastikan bahwa konten yang diharapkan ada dalam "about.html"
         expected_content = 'Tentang Kami'
