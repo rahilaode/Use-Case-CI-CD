@@ -15,6 +15,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
+      env:
+        DATES: $(date +%s)
       run: |
-        docker build . --tag rahilwisdom/flaskapp:$(date +%s)
+        docker build . --tag rahilwisdom/flaskapp:$DATES
+        docker run --name flaskapp-cont -p 5000:5000 rahilwisdom/flaskapp:$DATES
+        docker images
+        docker container ls
         
