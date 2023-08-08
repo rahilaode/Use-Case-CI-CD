@@ -8,5 +8,9 @@ app = Flask(__name__)
 def home():
     return 'Selamat datang di halaman utama!'
 
+@app.route('/about')
+def about():
+    return render_template('/templates/about.html')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
