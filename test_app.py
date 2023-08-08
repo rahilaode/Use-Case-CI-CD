@@ -41,7 +41,7 @@ class TestApp(unittest.TestCase):
         self.assertIn('Tentang Kami', resp.text)
         print("Test 2 Passed")
         
-        # Cek isi konten dari respon
+        # Cek isi konten dari respons
         self.assertIn('Aplikasi ini memberikan estimasi harga rumah berdasarkan fitur-fitur tertentu.', resp.text)
         self.assertIn('Tim kami berkomitmen untuk memberikan informasi yang akurat dan berguna bagi pengguna kami.', resp.text)
         self.assertIn('Ditulis oleh John Doe', resp.text)
