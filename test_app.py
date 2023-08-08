@@ -1,31 +1,53 @@
 import unittest
+import requests
 from app import app
 
 class TestApp(unittest.TestCase):
-
-    def setUp(self):
-        self.app = app.test_client()
-        self.app.testing = True
-
-    def test_home_page(self):
-        response = self.app.get('/')
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data.decode(), 'Selamat datang di halaman utama!')
-
-    def test_about_page(self):
-        response = self.app.get('/about')
-        self.assertEqual(response.status_code, 200)
-
-        # Memastikan bahwa "about.html" ada dalam respon
-        self.assertIn('./templates/about.html', response.data.decode())
-
-        # Memastikan bahwa konten yang diharapkan ada dalam "about.html"
-        expected_content = 'Tentang Kami'
-        self.assertIn(expected_content, response.data.decode())
-
-        # Memastikan bahwa konten lain yang diharapkan juga ada dalam "about.html"
-        expected_author = 'Ditulis oleh John Doe'
-        self.assertIn(expected_author, response.data.decode())
-
+    URL = "http://127.0.0.1:5000"
+    
+    # Fungsi untuk mencek halaman home
+    def home_url(self):
+        print("=======================")
+        print("HOME URL TESTING")
+        print("=======================")
+        
+        # Mendapatkan respon
+        resp = requests.get(self.URL)
+        
+        # Cek apakah ada respon atau tidak
+        self.assertEqual(resp.status_code, 200, "No response from HOME URL")
+        print("Test 1 Passed")
+        
+        # Cek isi konten dari respon
+        self.assertAlmostEqual(resp._content, b'Selamat datang di halaman utama!')
+        print("Test 2 Passed\n")
+        
+        print("Testing for HOME URL ARE SUCCESFULLY PASSED !!!\n")
+        
+    def about_url(self):
+        print("=======================")
+        print("ABOUT URL TESTING")
+        print("=======================")
+        URL = self.URL + "/about"
+        
+        # Mendapatkan respon
+        resp = requests.get(URL)
+        
+        # Cek apakah ada respon atau tidak
+        self.assertEqual(resp.status_code, 200, "No response from ABOUT URL")
+        print("Test 1 Passed")
+        
+        # Cek isi konten dari respon
+        self.assertAlmostEqual(resp._content, b'Tentang Kami')
+        print("Test 2 Passed\n")
+        
+        # Cek isi konten dari respon
+        self.assertAlmostEqual(resp._content, b'Ditulis oleh John Doe')
+        print("Test 3 Passed\n")
+        
+        print("Testing for ABOUT URL ARE SUCCESFULLY PASSED !!!\n")
+        
 if __name__ == '__main__':
-    unittest.main()
+    tester = TestApp()
+    tester.home_url()
+    tester.about_url()
