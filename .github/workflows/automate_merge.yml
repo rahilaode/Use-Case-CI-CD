@@ -1,4 +1,5 @@
 name: automerge
+
 on:
   pull_request:
     types:
@@ -16,7 +17,7 @@ on:
   check_suite:
     types:
       - completed
-  status: {}
+
 jobs:
   automerge:
     runs-on: ubuntu-latest
