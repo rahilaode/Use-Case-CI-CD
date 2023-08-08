@@ -23,7 +23,8 @@ class TestApp(unittest.TestCase):
         print("Test 2 Passed\n")
         
         print("Testing for HOME URL ARE SUCCESFULLY PASSED !!!\n")
-        
+    
+    # Fungsi untuk mencek halaman about
     def about_url(self):
         print("=======================")
         print("ABOUT URL TESTING")
