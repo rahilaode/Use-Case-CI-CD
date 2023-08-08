@@ -38,11 +38,13 @@ class TestApp(unittest.TestCase):
         print("Test 1 Passed")
         
         # Cek isi konten dari respon
-        self.assertAlmostEqual(resp._content, b'Tentang Kami')
-        print("Test 2 Passed\n")
+        self.assertIn('Tentang Kami', resp.text)
+        print("Test 2 Passed")
         
         # Cek isi konten dari respon
-        self.assertAlmostEqual(resp._content, b'Ditulis oleh John Doe')
+        self.assertIn('Aplikasi ini memberikan estimasi harga rumah berdasarkan fitur-fitur tertentu.', resp.text)
+        self.assertIn('Tim kami berkomitmen untuk memberikan informasi yang akurat dan berguna bagi pengguna kami.', resp.text)
+        self.assertIn('Ditulis oleh John Doe', resp.text)
         print("Test 3 Passed\n")
         
         print("Testing for ABOUT URL ARE SUCCESFULLY PASSED !!!\n")
