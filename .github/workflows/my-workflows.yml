@@ -50,7 +50,7 @@ jobs:
         
     - name: Testing
       run: |
-        curl http://127.0.0.1:5000/
+        python3 test_app.py
 
   merge:
     name: Automated merge if pass

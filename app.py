@@ -9,4 +9,4 @@ def home():
     return 'Selamat datang di halaman utama!'
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
