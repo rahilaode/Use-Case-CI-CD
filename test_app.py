@@ -48,7 +48,7 @@ class TestApp(unittest.TestCase):
         self.assertIn('Ditulis oleh John Doe', resp.text)
         print("Test 3 Passed\n")
         
-        print("Testing for ABOUT URL ARE SUCCESFULLY PASSED !!!\n")
+        print("Testing SUCCESFULLY PASSED !!!\n")
         
 if __name__ == '__main__':
     tester = TestApp()
